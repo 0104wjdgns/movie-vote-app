@@ -332,6 +332,7 @@ export default function MoviesPage() {
                             src={movie.poster_url}
                             alt={movie.title}
                             fill
+                            sizes="(max-width: 768px) 50vw, 200px"
                             style={{ objectFit: "cover" }}
                           />
                         ) : (

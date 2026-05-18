@@ -11,7 +11,12 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "타우마제인 리더스클럽 — 영화 선정",
   description: "공동선을 주제로 한 영화 추천 및 투표",
-  viewport: "width=device-width, initial-scale=1, maximum-scale=1",
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
 };
 
 export default function RootLayout({
