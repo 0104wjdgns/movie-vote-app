@@ -1,26 +1,159 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --bg: #FFFBF0;
+  --ink: #1a1a1a;
+  --accent: #E8D5B7;
+  --shadow: #1a1a1a;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-caveat), 'Caveat', cursive;
+  min-height: 100vh;
+}
+
+.doodle-box {
+  border: 2.5px solid var(--ink);
+  border-radius: 4px;
+  box-shadow: 4px 4px 0px var(--shadow);
+  background: white;
+}
+
+.doodle-btn {
+  border: 2.5px solid var(--ink);
+  border-radius: 6px;
+  box-shadow: 4px 4px 0px var(--shadow);
+  background: var(--bg);
+  font-family: var(--font-caveat), 'Caveat', cursive;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  padding: 0.5rem 1.5rem;
+}
+
+.doodle-btn:hover {
+  box-shadow: 5px 5px 0px var(--shadow);
+  transform: translate(-1px, -1px);
+}
+
+.doodle-btn:active {
+  box-shadow: 1px 1px 0px var(--shadow);
+  transform: translate(3px, 3px);
+}
+
+.doodle-btn-primary {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.doodle-btn-primary:hover {
+  background: #333;
+}
+
+.doodle-input {
+  border: 2.5px solid var(--ink);
+  border-radius: 4px;
+  background: white;
+  font-family: var(--font-caveat), 'Caveat', cursive;
+  font-size: 1.2rem;
+  padding: 0.5rem 0.75rem;
+  width: 100%;
+  outline: none;
+  box-shadow: 3px 3px 0px var(--shadow);
+}
+
+.doodle-input:focus {
+  box-shadow: 5px 5px 0px var(--shadow);
+  transform: translate(-1px, -1px);
+}
+
+.doodle-card {
+  border: 2.5px solid var(--ink);
+  border-radius: 6px;
+  box-shadow: 5px 5px 0px var(--shadow);
+  background: white;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.doodle-card:hover {
+  box-shadow: 7px 7px 0px var(--shadow);
+  transform: translate(-2px, -2px);
+}
+
+.doodle-card.selected {
+  border-color: #4a7c59;
+  box-shadow: 5px 5px 0px #4a7c59;
+  background: #f0fff4;
+}
+
+.doodle-card:active {
+  box-shadow: 2px 2px 0px var(--shadow);
+  transform: translate(3px, 3px);
+}
+
+.page-container {
+  min-height: 100vh;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+}
+
+.doodle-title {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--ink);
+}
+
+.doodle-subtitle {
+  font-size: 1.4rem;
+  color: #555;
+}
+
+/* 손그림 느낌 밑줄 */
+.doodle-underline {
+  display: inline-block;
+  border-bottom: 3px solid var(--ink);
+  padding-bottom: 2px;
+}
+
+/* 투표 뱃지 */
+.vote-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: var(--ink);
+  color: var(--bg);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 700;
+  border: 2px solid var(--bg);
+}
+
+/* 체크 오버레이 */
+.check-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(74, 124, 89, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.check-mark {
+  font-size: 3rem;
+  color: #2d6a4f;
+  text-shadow: 2px 2px 0px white;
 }
