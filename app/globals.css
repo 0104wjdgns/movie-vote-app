@@ -1,159 +1,229 @@
 @import "tailwindcss";
 
-:root {
-  --bg: #FFFBF0;
-  --ink: #1a1a1a;
-  --accent: #E8D5B7;
-  --shadow: #1a1a1a;
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  background: var(--bg);
-  color: var(--ink);
-  font-family: var(--font-caveat), 'Caveat', cursive;
+  background: #07090F;
+  color: #F0F4FF;
+  font-family: var(--font-inter), 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
 }
 
-.doodle-box {
-  border: 2.5px solid var(--ink);
-  border-radius: 4px;
-  box-shadow: 4px 4px 0px var(--shadow);
-  background: white;
-}
-
-.doodle-btn {
-  border: 2.5px solid var(--ink);
-  border-radius: 6px;
-  box-shadow: 4px 4px 0px var(--shadow);
-  background: var(--bg);
-  font-family: var(--font-caveat), 'Caveat', cursive;
-  font-size: 1.25rem;
+/* ─── Buttons ─── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 28px;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  font-family: inherit;
   cursor: pointer;
-  transition: all 0.1s ease;
-  padding: 0.5rem 1.5rem;
+  transition: all 0.18s ease;
+  border: none;
+  letter-spacing: -0.01em;
+}
+.btn:active { transform: scale(0.96); }
+.btn:disabled { opacity: 0.35; cursor: not-allowed; transform: none; }
+
+.btn-primary {
+  background: linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%);
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(124,58,237,0.4);
+}
+.btn-primary:hover:not(:disabled) {
+  box-shadow: 0 8px 28px rgba(124,58,237,0.55);
+  transform: translateY(-1px);
 }
 
-.doodle-btn:hover {
-  box-shadow: 5px 5px 0px var(--shadow);
-  transform: translate(-1px, -1px);
+.btn-accent {
+  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  color: #1C0A00;
+  font-weight: 800;
+  box-shadow: 0 6px 20px rgba(245,158,11,0.4);
+}
+.btn-accent:hover:not(:disabled) {
+  box-shadow: 0 8px 28px rgba(245,158,11,0.55);
+  transform: translateY(-1px);
 }
 
-.doodle-btn:active {
-  box-shadow: 1px 1px 0px var(--shadow);
-  transform: translate(3px, 3px);
+.btn-ghost {
+  background: rgba(255,255,255,0.07);
+  color: #C8D0E8;
+  border: 1.5px solid rgba(255,255,255,0.12);
+}
+.btn-ghost:hover:not(:disabled) {
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  border-color: rgba(255,255,255,0.22);
 }
 
-.doodle-btn-primary {
-  background: var(--ink);
-  color: var(--bg);
+.btn-danger {
+  background: rgba(239,68,68,0.12);
+  color: #FCA5A5;
+  border: 1.5px solid rgba(239,68,68,0.3);
+}
+.btn-danger:hover:not(:disabled) {
+  background: rgba(239,68,68,0.2);
 }
 
-.doodle-btn-primary:hover {
-  background: #333;
+/* ─── Card ─── */
+.card {
+  background: #111827;
+  border: 1px solid #1F2B45;
+  border-radius: 18px;
 }
 
-.doodle-input {
-  border: 2.5px solid var(--ink);
-  border-radius: 4px;
-  background: white;
-  font-family: var(--font-caveat), 'Caveat', cursive;
-  font-size: 1.2rem;
-  padding: 0.5rem 0.75rem;
+/* ─── Input ─── */
+.input {
   width: 100%;
+  padding: 16px 18px;
+  background: #111827;
+  border: 1.5px solid #1F2B45;
+  border-radius: 14px;
+  color: #F0F4FF;
+  font-size: 1rem;
+  font-family: inherit;
   outline: none;
-  box-shadow: 3px 3px 0px var(--shadow);
+  transition: all 0.2s;
+}
+.input::placeholder { color: #4A5578; }
+.input:focus {
+  border-color: #7C3AED;
+  box-shadow: 0 0 0 3px rgba(124,58,237,0.18);
 }
 
-.doodle-input:focus {
-  box-shadow: 5px 5px 0px var(--shadow);
-  transform: translate(-1px, -1px);
-}
-
-.doodle-card {
-  border: 2.5px solid var(--ink);
-  border-radius: 6px;
-  box-shadow: 5px 5px 0px var(--shadow);
-  background: white;
+/* ─── Movie Card ─── */
+.movie-card {
+  position: relative;
+  border-radius: 14px;
   overflow: hidden;
   cursor: pointer;
-  transition: all 0.1s ease;
+  transition: all 0.2s ease;
+  border: 2.5px solid transparent;
+  background: #111827;
+}
+.movie-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.5); }
+.movie-card.selected {
+  border-color: #F59E0B;
+  box-shadow: 0 0 0 1px #F59E0B, 0 8px 28px rgba(245,158,11,0.3);
+}
+.movie-card .poster-gradient {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.1) 100%);
+}
+.movie-card .poster-info {
+  position: absolute; bottom: 0; left: 0; right: 0; padding: 12px 10px 10px;
+}
+.movie-card .check-overlay {
+  position: absolute; inset: 0;
+  background: rgba(245,158,11,0.22);
+  display: flex; align-items: center; justify-content: center;
+  backdrop-filter: blur(1px);
 }
 
-.doodle-card:hover {
-  box-shadow: 7px 7px 0px var(--shadow);
-  transform: translate(-2px, -2px);
-}
-
-.doodle-card.selected {
-  border-color: #4a7c59;
-  box-shadow: 5px 5px 0px #4a7c59;
-  background: #f0fff4;
-}
-
-.doodle-card:active {
-  box-shadow: 2px 2px 0px var(--shadow);
-  transform: translate(3px, 3px);
-}
-
-.page-container {
-  min-height: 100vh;
-  background: var(--bg);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem 1.5rem;
-}
-
-.doodle-title {
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 1.3;
-  color: var(--ink);
-}
-
-.doodle-subtitle {
-  font-size: 1.4rem;
-  color: #555;
-}
-
-/* 손그림 느낌 밑줄 */
-.doodle-underline {
-  display: inline-block;
-  border-bottom: 3px solid var(--ink);
-  padding-bottom: 2px;
-}
-
-/* 투표 뱃지 */
+/* ─── Vote Badge ─── */
 .vote-badge {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  background: var(--ink);
-  color: var(--bg);
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.9rem;
-  font-weight: 700;
-  border: 2px solid var(--bg);
+  position: absolute; top: 8px; left: 8px;
+  background: rgba(245,158,11,0.92);
+  color: #1C0A00;
+  font-weight: 800; font-size: 0.72rem;
+  padding: 3px 9px; border-radius: 99px;
 }
 
-/* 체크 오버레이 */
-.check-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(74, 124, 89, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* ─── Progress ─── */
+.progress-bar {
+  height: 10px; background: #1F2B45; border-radius: 99px; overflow: hidden;
+}
+.progress-fill {
+  height: 100%; border-radius: 99px;
+  background: linear-gradient(90deg, #7C3AED, #F59E0B);
+  transition: width 0.7s cubic-bezier(0.4,0,0.2,1);
 }
 
-.check-mark {
-  font-size: 3rem;
-  color: #2d6a4f;
-  text-shadow: 2px 2px 0px white;
+/* ─── Bottom Nav ─── */
+.bottom-nav {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: rgba(7,9,15,0.92);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid #1F2B45;
+  display: flex; z-index: 50;
+  padding-bottom: env(safe-area-inset-bottom);
 }
+.bottom-nav-item {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 12px 0; gap: 5px; cursor: pointer;
+  transition: all 0.15s; color: #4A5578;
+  font-size: 0.72rem; font-weight: 600;
+  background: none; border: none; font-family: inherit;
+}
+.bottom-nav-item.active { color: #F59E0B; }
+.bottom-nav-item .nav-icon { font-size: 1.5rem; line-height: 1; }
+
+/* ─── Participant Badge ─── */
+.participant-badge {
+  width: 38px; height: 38px; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 0.85rem; border: 2px solid;
+}
+.participant-badge.voted { background: rgba(34,197,94,0.15); border-color: #22C55E; color: #4ADE80; }
+.participant-badge.not-voted { background: rgba(74,85,120,0.15); border-color: #2A3560; color: #4A5578; }
+
+/* ─── Tags ─── */
+.tag {
+  display: inline-flex; align-items: center;
+  padding: 4px 12px; border-radius: 99px;
+  font-size: 0.78rem; font-weight: 700;
+}
+.tag-primary { background: rgba(124,58,237,0.18); color: #A78BFA; border: 1px solid rgba(124,58,237,0.35); }
+.tag-accent { background: rgba(245,158,11,0.18); color: #FCD34D; border: 1px solid rgba(245,158,11,0.35); }
+
+/* ─── Modal ─── */
+.modal-backdrop {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.75); backdrop-filter: blur(6px);
+  z-index: 100; display: flex; align-items: flex-end;
+}
+.modal-sheet {
+  background: #111827; border: 1px solid #1F2B45;
+  border-radius: 24px 24px 0 0; padding: 28px 24px;
+  width: 100%; max-height: 80vh; overflow-y: auto;
+}
+
+/* ─── Toast ─── */
+.toast {
+  position: fixed; top: 24px; left: 50%; transform: translateX(-50%);
+  background: #1A2540; border: 1px solid #2A3A60;
+  border-radius: 14px; padding: 14px 22px;
+  color: #F0F4FF; font-size: 0.95rem; font-weight: 600;
+  z-index: 200; white-space: nowrap;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+  animation: toast-in 0.25s ease;
+}
+@keyframes toast-in {
+  from { opacity: 0; transform: translateX(-50%) translateY(-12px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* ─── Section Label ─── */
+.section-label {
+  font-size: 0.72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em; color: #4A5578;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #1F2B45; border-radius: 4px; }
+
+/* ─── Pulse animation ─── */
+@keyframes pulse { 0%,100%{opacity:0.25} 50%{opacity:1} }
