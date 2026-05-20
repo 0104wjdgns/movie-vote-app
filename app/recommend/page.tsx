@@ -186,6 +186,15 @@ export default function RecommendPage() {
             >
               {loading ? "검색 중..." : "🔍  영화 검색"}
             </button>
+
+            <button
+  className="btn btn-ghost"
+  style={{ width: "100%", padding: "16px", fontSize: "1rem" }}
+  onClick={() => router.push("/movies")}
+>
+  영화 추천 건너뛰고 즉시 투표하기
+</button>
+
           </div>
         )}
 
