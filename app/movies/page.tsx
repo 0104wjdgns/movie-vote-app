@@ -235,15 +235,15 @@ export default function MoviesPage() {
             <div style={{ display: "flex", gap: 10 }}>
               {ALL_USERS.map((u) => (
                 <div key={u} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
-                  <div
-                    className={`participant-badge ${status.voters.includes(u) ? "voted" : "not-voted"}`}
-                    style={u === userId ? { borderColor: USER_COLOR[u], color: USER_COLOR[u],
-                      background: `${USER_COLOR[u]}20` } : {}}
-                  >
-                    {status.voters.includes(u) ? "✓" : u}
-                  </div>
-                  <div style={{ fontSize: "0.62rem", color: "#8896B8" }}>{USER_EMOJI[u]}</div>
+                <div
+                  className={`participant-badge ${status.voters.includes(u) ? "voted" : "not-voted"}`}
+                  style={u === userId ? { borderColor: USER_COLOR[u], color: USER_COLOR[u],
+                    background: `${USER_COLOR[u]}20` } : {}}
+                >
+                  {status.voters.includes(u) ? "✓" : USER_EMOJI[u]}
                 </div>
+                <div style={{ fontSize: "0.62rem", color: "#8896B8" }}>{u}</div>
+              </div>
               ))}
             </div>
           </div>
