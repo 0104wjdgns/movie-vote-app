@@ -159,7 +159,7 @@ export default function RecommendPage() {
                 </label>
                 <input
                   className="input"
-                  placeholder="예) 봉준호"
+                  placeholder="예) 봉준호. 모르시면 생략해주세요!"
                   value={director}
                   onChange={(e) => setDirector(e.target.value)}
                   onKeyDown={(e) => e.key === "Enter" && handleSearch()}

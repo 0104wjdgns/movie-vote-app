@@ -124,8 +124,8 @@ export default function Home() {
         <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
           {[
             { icon: "👥", text: "5명 참여" },
-            { icon: "🎞️", text: "최대 10편" },
-            { icon: "🗳️", text: "실시간 투표" },
+            { icon: "🎞️", text: "인당 최대 두 편 추천!" },
+            { icon: "🗳️", text: "복수 후보 투표 가능" },
           ].map((chip) => (
             <div key={chip.text} style={{
               display: "flex", alignItems: "center", gap: 6,

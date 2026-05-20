@@ -4,11 +4,11 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const USERS = [
-  { id: "A", emoji: "🦁", color: "#EF4444", label: "참석자 A" },
-  { id: "B", emoji: "🐯", color: "#F59E0B", label: "참석자 B" },
-  { id: "C", emoji: "🦊", color: "#8B5CF6", label: "참석자 C" },
-  { id: "D", emoji: "🐻", color: "#22C55E", label: "참석자 D" },
-  { id: "E", emoji: "🐺", color: "#3B82F6", label: "참석자 E" },
+  { id: "김태상님", emoji: "🦁", color: "#EF4444", label: "참석자 김태상님" },
+  { id: "김가람님", emoji: "🐯", color: "#F59E0B", label: "참석자 김가람님" },
+  { id: "이환규님", emoji: "🦊", color: "#8B5CF6", label: "참석자 이환규님" },
+  { id: "서재은님", emoji: "🐻", color: "#22C55E", label: "참석자 서재은님" },
+  { id: "송정훈님", emoji: "🐺", color: "#3B82F6", label: "참석자 송정훈님" },
 ];
 
 export default function SelectUserPage() {
@@ -44,10 +44,10 @@ export default function SelectUserPage() {
           <h1 style={{
             fontSize: "2rem", fontWeight: 800, color: "#F0F4FF", lineHeight: 1.2,
           }}>
-            나는 누구인가요?
+            본인 성함을 골라주세요!
           </h1>
           <p style={{ color: "#8896B8", fontSize: "1rem", marginTop: 10, lineHeight: 1.6 }}>
-            본인의 참여자 번호를 선택해주세요
+            본인의 참여자 이름을 선택해주세요
           </p>
         </div>
 

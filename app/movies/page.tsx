@@ -21,10 +21,10 @@ interface Status {
   totalMovies: number;
 }
 
-const ALL_USERS = ["A", "B", "C", "D", "E"];
-const USER_EMOJI: Record<string, string> = { A: "🦁", B: "🐯", C: "🦊", D: "🐻", E: "🐺" };
+const ALL_USERS = ["김태상님", "김가람님", "이환규님", "서재은님", "송정훈님"];
+const USER_EMOJI: Record<string, string> = { 김태상님: "🦁", 김가람님: "🐯", 이환규님: "🦊", 서재은님: "🐻", 송정훈님: "🐺" };
 const USER_COLOR: Record<string, string> = {
-  A: "#EF4444", B: "#F59E0B", C: "#8B5CF6", D: "#22C55E", E: "#3B82F6",
+  "김태상님": "#EF4444", "김가람님": "#F59E0B", "이환규님": "#8B5CF6", "서재은님": "#22C55E", "송정훈님": "#3B82F6",
 };
 
 type Tab = "movies" | "results" | "mine";
@@ -94,12 +94,17 @@ export default function MoviesPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ user_id: userId, movie_ids: Array.from(selected) }),
       });
+      const data = await res.json();
       if (res.ok) {
         setHasVoted(true);
         await fetchAll(userId);
         setTab("results");
         showToast("🗳 투표 완료!");
+      } else {
+        showToast(`❌ 오류: ${data.error || res.status}`);
       }
+    } catch (e) {
+      showToast(`❌ 네트워크 오류: ${e}`);
     } finally {
       setSubmitting(false);
     }

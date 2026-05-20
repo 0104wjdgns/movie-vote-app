@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { supabase } from "@/lib/supabase";
 
-const ALL_USERS = ["A", "B", "C", "D", "E"];
+const ALL_USERS = ["김태상님", "김가람님", "이환규님", "서재은님", "송정훈님"];
 
 export async function GET() {
   const { data: votes } = await supabase
